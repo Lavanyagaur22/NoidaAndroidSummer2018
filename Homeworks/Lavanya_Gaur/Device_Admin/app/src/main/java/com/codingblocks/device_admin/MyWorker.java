@@ -11,6 +11,8 @@ import java.util.Date;
 
 import androidx.work.Worker;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class MyWorker extends Worker {
     public String dateToStr;
 
@@ -20,13 +22,14 @@ public class MyWorker extends Worker {
 
         Context context=getApplicationContext();
 
-        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(context);
-        String email1=sharedPreferences.getString("email","");
+        SharedPreferences sharedPreferences= context.getSharedPreferences("my preference", MODE_PRIVATE);
+        String email1=sharedPreferences.getString("email", "" );
 
         try {
 
 
-            GMailSender sender = new GMailSender("lvngaur@gmail.com", "Android2018");
+            //add your default code, was just checking !!! :)
+            GMailSender sender = new GMailSender("example@email.com", "lol, cant get it");
 
 
             sender.sendMail("Someone tried to unlock your " + MainActivity.getDeviceName(),
@@ -39,7 +42,7 @@ public class MyWorker extends Worker {
 
             Log.e("TAG", "doInBackground----------: " + MainActivity.getDeviceName());
 
-            Log.e("TAG", "doInBackground----------: "+email1 );
+            Log.e("TAG", "doInBackground----------: "+ email1 );
 
 
             return Result.SUCCESS;
