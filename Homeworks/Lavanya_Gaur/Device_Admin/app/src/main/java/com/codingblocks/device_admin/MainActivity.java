@@ -6,16 +6,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.StateListDrawable;
-import android.os.AsyncTask;
 import android.os.Build;
-import android.preference.PreferenceManager;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,14 +20,6 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.androidhiddencamera.CameraConfig;
-import com.androidhiddencamera.config.CameraFacing;
-import com.androidhiddencamera.config.CameraImageFormat;
-import com.androidhiddencamera.config.CameraResolution;
-import com.androidhiddencamera.config.CameraRotation;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -68,11 +54,11 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
         Log.e("TAG", "onCreate:-------- ");
 
-//        sharedPreferences=getSharedPreferences("my preference",MODE_PRIVATE);
+//        sharedPreferences = getSharedPreferences("my preference", MODE_PRIVATE);
 //
 //        SharedPreferences.Editor editor = sharedPreferences.edit();
 //
-//        editor.putString("email",emailfinal);
+//        editor.putString("email", emailfinal);
 //
 //        editor.apply();
 
@@ -115,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                         public void onClick(DialogInterface dialogInterface, int i) {
                             Log.e("TAG", "onClick positive : yipee");
 
-                            Log.e("TAG", "onClick: checked "+b );
+                            Log.e("TAG", "onClick: checked " + b);
                             Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
                             intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, mComponentName);
                             intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION, description);
@@ -137,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             alertDialog.show();
 
         } else {
-            Log.e("TAG", "onCheckedChanged: "+b );
+            Log.e("TAG", "onCheckedChanged: " + b);
 
         }
 
@@ -167,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             return capitalize(model);
         }
 
-        Log.e("TAG", "getDeviceName: "+ capitalize(manufacturer) + " " + model);
+        Log.e("TAG", "getDeviceName: " + capitalize(manufacturer) + " " + model);
         return capitalize(manufacturer) + " " + model;
 
     }
@@ -210,13 +196,13 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
                         EditText emailEt = dialogView.findViewById(R.id.etEmail);
                         String email = emailEt.getText().toString();
-                        emailfinal=email;
+                        emailfinal = email;
                         textViewEmail.setVisibility(View.VISIBLE);
                         textViewEmail.setText(email);
 
-                        sharedPreferences=getSharedPreferences("my preference",MODE_PRIVATE);
+                        sharedPreferences = getSharedPreferences("my preference", MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("email",email);
+                        editor.putString("email", email);
                         editor.apply();
                         Toast.makeText(MainActivity.this, "yo " + email, Toast.LENGTH_SHORT).show();
 
@@ -235,16 +221,9 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 //    }
 
 
-
-
-    public  String senderemail(){
+    public String senderemail() {
         return emailfinal;
     }
-
-
-
-
-
 
 
 }
